@@ -41,6 +41,7 @@ $(BUILD_DIR):
 clean:
 # echo CFILES=$(CFILES)
 	rm -rf $(BUILD_DIR)
+	rm -f $(TARGET)
 
 
 

@@ -2,7 +2,7 @@
  * @Author: your name
  * @Date: 2020-02-14 23:21:15
  * @LastEditTime : 2020-02-14 23:58:45
- * @LastEditors  : Please set LastEditors
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /cproj/MIDI/AudioPort.c
  */
@@ -18,12 +18,24 @@ Fyra-BH
 #include <stdio.h>
 #include <string.h>
 
+
+#include <pthread.h>
+
 int AudioInit() {
 	return 0;
 }
-int AudioPlay(char* path) {
+
+void *play_task(void *arg){
 	char cmd[255];
 	memset(cmd,0,255);
-	sprintf(cmd,"play %s",path);
+	sprintf(cmd,"play -q %s",(char*)arg);
 	system(cmd);
+
 }
+
+int AudioPlay(char* path) {
+
+	pthread_t thd;
+	int status=pthread_create(&thd,NULL,play_task,(void*)path);
+}
+

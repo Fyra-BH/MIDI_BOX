@@ -1,4 +1,4 @@
-# midi_box
+# my_midi
 midi文件解析
 
 通过简单的方式播放midi文件，需要本地音源
